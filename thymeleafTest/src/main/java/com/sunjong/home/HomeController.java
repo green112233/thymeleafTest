@@ -1,5 +1,8 @@
 package com.sunjong.home;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -30,5 +33,21 @@ public class HomeController {
 		model.addAttribute("pw",pw);
 		
 		return "hyperResult";
+	}
+	
+	@GetMapping(value= "/iftest")
+	public String iftest(Model model) {
+		
+		for(int i=1;i<=10; i++) {
+			memberDto.setId("tiger"+i);
+			memberDto.setName("길동"+i);
+			memberDto.setEmail("tiger"+i+"@abc.com");
+			memberDto.setAge(i+20);
+			
+			memberDtos.add(memberDto);
+		}
+		
+		model.addAttribute("memberDto",memberDtos);
+		return "ifTest";
 	}
 }
